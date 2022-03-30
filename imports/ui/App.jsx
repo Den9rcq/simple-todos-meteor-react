@@ -3,9 +3,9 @@ import { Hello } from './Hello.jsx';
 import { Info } from './Info.jsx';
 
 const tasks = [
-  {_id: 1, text: 'First Task'},
-  {_id: 2, text: 'Second Task'},
-  {_id: 3, text: 'Third Task'},
+  {_id: 1, text: 'Physical exercise'},
+  {_id: 2, text: 'To take a shower'},
+  {_id: 3, text: 'Have breakfast'},
 ];
 
 export const App = () => (
