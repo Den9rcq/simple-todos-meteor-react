@@ -2,3 +2,8 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+
+.task-form {
+  /* Стили сделаю потом, но тут схлопованье margin из-за h1 тега*/
+  margin-top: 1rem;
+}
