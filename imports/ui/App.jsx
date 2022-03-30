@@ -2,9 +2,9 @@ import React from 'react';
 import Task from "./Task";
 
 const tasks = [
-  {_id: 1, text: 'Physical exercise'},
-  {_id: 2, text: 'To take a shower'},
-  {_id: 3, text: 'Have breakfast'},
+  { _id: 1, text: 'Physical exercise' },
+  { _id: 2, text: 'To take a shower' },
+  { _id: 3, text: 'Have breakfast' },
 ];
 
 export const App = () => (
