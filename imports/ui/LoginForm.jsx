@@ -26,27 +26,31 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={submit} className="login-form">
-      <label htmlFor="username">Username</label>
+      <div>
+        <label htmlFor="username">Username</label>
 
-      <input
-        type="text"
-        placeholder="Username"
-        name="username"
-        required
-        onChange={e => handleChange(e)}
-      />
+        <input
+          type="text"
+          placeholder="Username"
+          name="username"
+          required
+          onChange={e => handleChange(e)}
+        />
+      </div>
+      <div>
+        <label htmlFor="password">Password</label>
 
-      <label htmlFor="password">Password</label>
-
-      <input
-        type="password"
-        placeholder="Password"
-        name="password"
-        required
-        onChange={e => handleChange(e)}
-      />
-
-      <button type="submit">Log In</button>
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          required
+          onChange={e => handleChange(e)}
+        />
+      </div>
+      <div>
+        <button type="submit">Log In</button>
+      </div>
     </form>
   );
 };
