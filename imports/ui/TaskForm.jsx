@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TasksCollection } from "../api/TasksCollection";
 
-const TaskForm = () => {
+const TaskForm = ({ user }) => {
   const [text, setText] = useState('');
 
   const handleSubmit = e => {
@@ -11,7 +11,8 @@ const TaskForm = () => {
 
     TasksCollection.insert({
       text: text.trim(),
-      createdAt: new Date()
+      createdAt: new Date(),
+      userId: user._id
     });
 
     setText("");
@@ -25,7 +26,7 @@ const TaskForm = () => {
         type="text"
         placeholder="Type to add new tasks"
         value={text}
-        onChange={({target}) => setText(target.value)}
+        onChange={({ target }) => setText(target.value)}
       />
 
       <button type="submit">Add Task</button>
