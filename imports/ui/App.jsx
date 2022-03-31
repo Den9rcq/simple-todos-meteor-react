@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { TasksCollection } from '/imports/api/TasksCollection';
+import { TasksCollection } from '/imports/db/TasksCollection';
 import Task from './Task';
 import TaskForm from "./TaskForm";
 import LoginForm from "./LoginForm";
@@ -29,15 +30,10 @@ export const App = () => {
 
   const logout = () => Meteor.logout();
 
-  const toggleChecked = ({ _id, isChecked }) => {
-    TasksCollection.update(_id, {
-      $set: {
-        isChecked: !isChecked
-      }
-    })
-  };
+  const toggleChecked = ({ _id, isChecked }) =>
+    Meteor.call('tasks.setIsChecked', _id, !isChecked);
 
-  const deleteTask = ({ _id }) => TasksCollection.remove(_id);
+  const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
 
   const pendingTasksCount = useTracker(() => {
     if (!user) {
@@ -68,7 +64,7 @@ export const App = () => {
             <button className="user" onClick={logout}>
               {user.username} 🚪 Logout
             </button>
-            <TaskForm user={user}/>
+            <TaskForm/>
 
             <div className="filter">
               <button onClick={() => setHideCompleted(!hideCompleted)}>
