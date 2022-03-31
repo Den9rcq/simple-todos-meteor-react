@@ -25,7 +25,7 @@ const TaskForm = () => {
         onChange={({ target }) => setText(target.value)}
       />
 
-      <button type="submit">Add Task</button>
+      <button type="submit bg-cyan-500 shadow-lg shadow-cyan-500/50">Add Task</button>
     </form>
   );
 };

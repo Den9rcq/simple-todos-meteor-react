@@ -51,7 +51,7 @@ export const App = () => {
   const getHideCompleted = () => setHideCompleted(!hideCompleted);
 
   return (
-    <div className="app">
+    <div className="container mx-auto">
       <Header pendingTasksCount={pendingTasksCount}/>
 
       <div className="main">
@@ -80,5 +80,5 @@ export const App = () => {
         )}
       </div>
     </div>
-  );
+);
 };
