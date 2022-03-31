@@ -5,7 +5,10 @@ import { TasksCollection } from '/imports/db/TasksCollection';
 import Task from './Task';
 import TaskForm from "./TaskForm";
 import LoginForm from "./LoginForm";
-
+import Header from "./Header";
+import Button from "./Button";
+import Filter from "./Filter";
+import TasksList from "./TasksList";
 
 
 export const App = () => {
@@ -44,52 +47,35 @@ export const App = () => {
 
   const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
 
-  const pendingTasksTitle = `${
-    pendingTasksCount ? ` (${pendingTasksCount})` : ''
-  }`;
+  const getHideCompleted = () => setHideCompleted(!hideCompleted)
 
   return (
     <div className="app">
-      <header>
-        <div className="app-bar">
-          <div className="app-header">
-            <h1>
-              📝️ To Do List
-              {pendingTasksTitle}
-            </h1>
-          </div>
-        </div>
-      </header>
+      <Header pendingTasksCount={pendingTasksCount}/>
 
       <div className="main">
         {user ? (
           <>
-            <button className="user" onClick={logout}>
-              {user.username} 🚪 Logout
-            </button>
+            <Button
+              className="user"
+              title={`${user.username} 🚪 Logout`}
+              handelClick={logout}/>
+
             <TaskForm/>
 
-            <div className="filter">
-              <button onClick={() => setHideCompleted(!hideCompleted)}>
-                {hideCompleted ? 'Show All' : 'Hide Completed'}
-              </button>
-            </div>
+            <Filter
+              hideCompleted={hideCompleted}
+              handelClick={getHideCompleted}/>
 
-            {isLoading && <div className="loading">loading...</div>}
-
-            <ul className="tasks">
-              {tasks.map(task => (
-                <Task
-                  key={task._id}
-                  task={task}
-                  onCheckboxClick={toggleChecked}
-                  onDeleteClick={deleteTask}
-                />
-              ))}
-            </ul>
+            {isLoading
+              ? <div className="loading">loading...</div>
+              : <TasksList
+                tasks={tasks}
+                handleToggleChecked={toggleChecked}
+                handleDeleteChecked={deleteTask}/>}
           </>
         ) : (
-          <LoginForm />
+          <LoginForm/>
         )}
       </div>
     </div>
