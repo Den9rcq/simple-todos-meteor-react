@@ -51,16 +51,18 @@ export const App = () => {
   const getHideCompleted = () => setHideCompleted(!hideCompleted);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto m-2 p-5">
       <Header pendingTasksCount={pendingTasksCount}/>
 
-      <div className="main">
+      <div className="flex flex-col gap-5">
         {user ? (
           <>
-            <Button
-              className="user"
-              title={`${user.username} 🚪 Logout`}
-              handelClick={logout}/>
+            <div className="self-end">
+              <Button
+                className="btn btn-red"
+                title={`${user.username} 🚪 Logout`}
+                handelClick={logout}/>
+            </div>
 
             <TaskForm/>
 

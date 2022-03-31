@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer components {
+  .btn {
+    @apply shadow-md rounded-xl font-medium text-gray-100 px-3 py-2 transition-colors duration-300
+  }
+  .btn-red {
+    @apply bg-red-400 hover:bg-red-500
+  }
+  .input {
+    @apply border rounded-md  focus:outline-none focus:ring-2  focus:border-transparent
+  }
+  .input-red {
+    @apply border-red-300 focus:ring-red-500
+  }
+}
