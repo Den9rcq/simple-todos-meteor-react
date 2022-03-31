@@ -54,7 +54,7 @@ export const App = () => {
     <div className="container mx-auto m-2 p-5">
       <Header pendingTasksCount={pendingTasksCount}/>
 
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-10">
         {user ? (
           <>
             <div className="self-end">
