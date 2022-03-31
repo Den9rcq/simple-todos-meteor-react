@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import Task from "./Task";
 
-const TasksList = ({tasks, handleToggleChecked, handleDeleteChecked}) => {
+const TasksList = ({ tasks, handleToggleChecked, handleDeleteChecked }) => {
   return (
     <ul className="tasks">
       {tasks.map(task => (

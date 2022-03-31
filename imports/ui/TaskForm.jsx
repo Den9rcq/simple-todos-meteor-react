@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Meteor } from 'meteor/meteor';
+import { Meteor } from "meteor/meteor";
 
 const TaskForm = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
 
     if (!text) return;
 
-    Meteor.call('tasks.insert', text);
+    Meteor.call("tasks.insert", text);
 
     setText("");
   };

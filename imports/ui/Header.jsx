@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Header = ({ pendingTasksCount }) => {
-  const pendingTasksTitle = pendingTasksCount ? `(${pendingTasksCount})` : ''
+  const pendingTasksTitle = pendingTasksCount ? `(${pendingTasksCount})` : ""
 
   return (
     <header>
