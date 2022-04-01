@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Meteor } from "meteor/meteor";
 import Button from "./Button";
+import { strings } from "../utils/localization";
 
 const LoginForm = () => {
   const [data, setData] = useState({
@@ -29,7 +30,7 @@ const LoginForm = () => {
         <input
           className="p-2 input input-red w-1/3"
           type="text"
-          placeholder="Username"
+          placeholder={strings.username}
           name="username"
           required
           onChange={e => handleChange(e)}
@@ -37,14 +38,14 @@ const LoginForm = () => {
         <input
           className="p-2 input input-red w-1/3"
           type="password"
-          placeholder="Password"
+          placeholder={strings.password}
           name="password"
           required
           onChange={e => handleChange(e)}
         />
         <Button
           className="btn btn-red w-1/3"
-          title="Log in"
+          title={strings.btnLogin}
           type="submit"/>
     </form>
   );

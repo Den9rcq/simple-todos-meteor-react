@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Meteor } from "meteor/meteor";
+import { strings } from "../utils/localization";
 
 const TaskForm = () => {
   const [text, setText] = useState("");
@@ -21,14 +22,14 @@ const TaskForm = () => {
       <input
         className="w-4/5 p-2 input input-red"
         type="text"
-        placeholder="Type to add new tasks"
+        placeholder={strings.placeholderTask}
         value={text}
         onChange={({ target }) => setText(target.value)}
       />
 
       <button
         className="btn btn-red"
-        type="submit">Add Task</button>
+        type="submit">{strings.btnAddTask}</button>
     </form>
   );
 };

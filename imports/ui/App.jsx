@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 import { TasksCollection } from "/imports/db/TasksCollection";
@@ -8,9 +8,10 @@ import Header from "./Header";
 import Button from "./Button";
 import Filter from "./Filter";
 import TasksList from "./TasksList";
-
+import { strings } from "../utils/localization";
 
 export const App = () => {
+  const [lang, setLang] = useState('')
   const [hideCompleted, setHideCompleted] = useState(false);
   const hideCompletedFilter = { isChecked: { $ne: true } };
 
@@ -18,6 +19,14 @@ export const App = () => {
   const userFilter = user ? { userId: user._id } : {};
 
   const pendingOnlyFilter = { ...hideCompletedFilter, ...userFilter };
+
+  useEffect(() => {
+    setLang(strings.getLanguage())
+  }, [])
+
+  useEffect(()=> {
+    strings.setLanguage(lang)
+  }, [lang])
 
   const { tasks, pendingTasksCount, isLoading } = useTracker(() => {
     const noDataAvailable = { tasks: [], pendingTasksCount: 0 };
@@ -60,7 +69,7 @@ export const App = () => {
             <div className="self-end">
               <Button
                 className="btn btn-red"
-                title={`${user.username} 🚪 Logout`}
+                title={`${user.username} 🚪 ${strings.logout}`}
                 handelClick={logout}/>
             </div>
 
@@ -82,5 +91,5 @@ export const App = () => {
         )}
       </div>
     </div>
-);
+  );
 };
