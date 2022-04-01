@@ -22,8 +22,8 @@ export const App = () => {
 
   useEffect(() => {
     setLang(strings.getLanguage())
-  }, [lang])
-
+  }, [])
+  
   const { tasks, pendingTasksCount, isLoading } = useTracker(() => {
     const noDataAvailable = { tasks: [], pendingTasksCount: 0 };
     if (!Meteor.user()) {
