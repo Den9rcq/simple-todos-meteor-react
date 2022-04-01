@@ -22,10 +22,6 @@ export const App = () => {
 
   useEffect(() => {
     setLang(strings.getLanguage())
-  }, [])
-
-  useEffect(()=> {
-    strings.setLanguage(lang)
   }, [lang])
 
   const { tasks, pendingTasksCount, isLoading } = useTracker(() => {
@@ -59,9 +55,17 @@ export const App = () => {
 
   const getHideCompleted = () => setHideCompleted(!hideCompleted);
 
+  const changeLang = () => {
+    setLang(prevState => prevState === "ru" ? "en" : "ru")
+  }
+  strings.setLanguage(lang)
+
   return (
     <div className="container mx-auto m-2 p-5">
-      <Header pendingTasksCount={pendingTasksCount}/>
+      <Header
+        lang={lang}
+        pendingTasksCount={pendingTasksCount}
+        handleClick={changeLang}/>
 
       <div className="flex flex-col gap-10">
         {user ? (

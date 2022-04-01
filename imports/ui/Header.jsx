@@ -1,16 +1,22 @@
 import React from "react";
 import { strings } from "../utils/localization";
+import Button from "./Button";
 
-const Header = ({ pendingTasksCount }) => {
+const Header = ({ lang, pendingTasksCount, handleClick }) => {
   const pendingTasksTitle = pendingTasksCount ? ` (${pendingTasksCount})` : ""
 
   return (
     <header>
-      <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 shadow-md p-4 mb-3 rounded-xl">
-          <h1 className="text-2xl text-gray-50">
-            {strings.titleApp}
-            {pendingTasksTitle}
-          </h1>
+      <div className="header flex-center">
+        <h1 className="text-2xl text-gray-50">
+          {strings.titleApp}
+          {pendingTasksTitle}
+        </h1>
+        <Button
+          title={lang}
+          className="btn btn-purple"
+          handelClick={handleClick}
+        />
       </div>
     </header>
   );
